@@ -3,6 +3,8 @@ package com.darkdemon.backlotBackend.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -13,7 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class User {
 
-    int id;
+    @Id
+    ObjectId id;
     String name;
     String userName;
     String email;
@@ -25,7 +28,7 @@ public class User {
     boolean isAdult;
     Preferences preferences;
     String theme; // Light | Dark
-    String joinedGoogle; //String | null
+    String googleId; //String | null
     Date createdAt;
     Date updatedAt;
 }

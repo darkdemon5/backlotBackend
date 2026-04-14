@@ -4,12 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Preferences {
     String language;
     String region;
-    // genre class array
+    List<Integer> genre = new ArrayList<>();// genre class array
     boolean showAdultContent;
 }
