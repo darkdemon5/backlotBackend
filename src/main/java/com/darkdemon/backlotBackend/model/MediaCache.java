@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 @Data
@@ -20,7 +22,7 @@ public class MediaCache {
     String backdropPath;
     String infoShort;
     String info;
-    //Genre class
+    List<Integer> genre = new ArrayList<>();//Genre class
     String releaseDate;
     int voteAverage;
     boolean adult;
