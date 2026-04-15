@@ -1,6 +1,6 @@
-package com.darkdemon.backlotBackend.model;
+package com.darkdemon.backlotBackend.models;
 
-
+import com.darkdemon.backlotBackend.enums.RatingSystem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,14 +14,17 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserLists {
+public class Reviews {
 
     @Id
     ObjectId id;
     ObjectId userId;
-    String description;
-    boolean isPublic;
-    Items[] items;
+    String tmdbId;
+    String mediaType; // Movie | TV | Kids
+    RatingSystem ratings;
+    String review;
+    boolean containsSpoilers;
+    int likes;
     Date createdAt;
     Date updatedAt;
 }

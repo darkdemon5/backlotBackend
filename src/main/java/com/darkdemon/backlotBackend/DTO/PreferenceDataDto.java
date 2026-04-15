@@ -1,18 +1,20 @@
-package com.darkdemon.backlotBackend.model;
+package com.darkdemon.backlotBackend.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Preferences {
+public class PreferenceDataDto {
     String language;
     String region;
-    List<Integer> genre = new ArrayList<>();// genre class array
+    List<Integer> genre;
+    boolean isAdult;
+    int birthyear;
     boolean showAdultContent;
+
 }

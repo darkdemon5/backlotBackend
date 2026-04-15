@@ -1,4 +1,4 @@
-package com.darkdemon.backlotBackend.model;
+package com.darkdemon.backlotBackend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

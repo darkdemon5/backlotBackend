@@ -1,4 +1,4 @@
-package com.darkdemon.backlotBackend.model;
+package com.darkdemon.backlotBackend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,13 +13,13 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WatchHistory {
+public class Notifications {
 
     @Id
     ObjectId id;
     ObjectId userId;
-    String tmdbId;
-    String mediaType;
-    Date watchedAt;
-    int progressPercent;
+    String type;
+    String message;
+    boolean isRead;
+    Date createdAt;
 }
