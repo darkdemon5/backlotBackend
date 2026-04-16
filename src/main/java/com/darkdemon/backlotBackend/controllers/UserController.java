@@ -15,7 +15,7 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    private ResponseEntity<?> getUser(@RequestBody String userName){
+    public ResponseEntity<?> getUser(@RequestBody String userName){
         return userService.getUser(userName);
     }
 }

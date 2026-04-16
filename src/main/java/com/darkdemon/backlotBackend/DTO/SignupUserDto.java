@@ -14,5 +14,5 @@ public class SignupUserDto {
     String email;
     String password;
     String role;
-    String CreatedAt;
+    String createdAt;
 }
