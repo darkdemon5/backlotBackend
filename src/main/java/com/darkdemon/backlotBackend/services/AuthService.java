@@ -1,9 +1,11 @@
 package com.darkdemon.backlotBackend.services;
 
+import com.darkdemon.backlotBackend.DTO.LoginDto;
 import com.darkdemon.backlotBackend.DTO.SignupUserDto;
 import com.darkdemon.backlotBackend.models.User;
 import com.darkdemon.backlotBackend.repositories.UserRepo;
 import com.darkdemon.backlotBackend.security.SecurityConfig;
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,17 @@ public class AuthService {
         this.securityConfig = securityConfig;
     }
 
+    public ResponseEntity<?> login(@NonNull LoginDto loginDto){
+        User user = userRepo.findByUserName(loginDto.getUserName()).orElseThrow(() -> new RuntimeException("User doesn't exists!!"));
+
+        if(securityConfig.passwordEncoder().matches(loginDto.getPassword(),user.getPassword())){
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(Map.of("message", "User logged in successfully!!"));
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Credential didn't match"));
+        }
+    }
+
     @Transactional
     public ResponseEntity<?> signUp(SignupUserDto signupUserDto){
         if(userRepo.existsByUserName(signupUserDto.getUserName())){
@@ -35,6 +48,6 @@ public class AuthService {
         user.setRole("User");
         user.setCreatedAt(signupUserDto.getCreatedAt());
         userRepo.save(user);
-        return ResponseEntity.status(HttpStatus.FOUND).body(Map.of("message", "User signed up successfully", "User data", user));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(Map.of("message", "User signed up successfully", "User data", user));
     }
 }

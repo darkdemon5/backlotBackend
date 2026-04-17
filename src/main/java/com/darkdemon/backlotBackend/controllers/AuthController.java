@@ -1,5 +1,6 @@
 package com.darkdemon.backlotBackend.controllers;
 
+import com.darkdemon.backlotBackend.DTO.LoginDto;
 import com.darkdemon.backlotBackend.DTO.SignupUserDto;
 import com.darkdemon.backlotBackend.services.AuthService;
 import org.springframework.http.ResponseEntity;
@@ -21,5 +22,10 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody SignupUserDto signupUserDto){
         return authService.signUp(signupUserDto);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
+        return authService.login(loginDto);
     }
 }
